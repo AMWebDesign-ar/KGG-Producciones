@@ -7,23 +7,26 @@ const contactForm = document.querySelector("[data-contact-form]");
 const formStatus = document.querySelector("[data-form-status]");
 
 function updateHeader() {
+  if (!header) return;
   header.classList.toggle("scrolled", window.scrollY > 20);
 }
 
 window.addEventListener("scroll", updateHeader, { passive: true });
 updateHeader();
 
-menuToggle.addEventListener("click", () => {
-  const isOpen = nav.classList.toggle("open");
-  menuToggle.setAttribute("aria-expanded", String(isOpen));
-});
-
-nav.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    nav.classList.remove("open");
-    menuToggle.setAttribute("aria-expanded", "false");
+if (menuToggle && nav) {
+  menuToggle.addEventListener("click", () => {
+    const isOpen = nav.classList.toggle("open");
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
   });
-});
+
+  nav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+}
 
 const revealObserver = new IntersectionObserver(
   (entries) => {
@@ -55,15 +58,17 @@ filterButtons.forEach((button) => {
   });
 });
 
-contactForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+if (contactForm && formStatus) {
+  contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-  const submitButton = contactForm.querySelector("button");
-  submitButton.disabled = true;
-  submitButton.textContent = "Mensaje enviado";
-  submitButton.style.background = "var(--success-bg)";
-  submitButton.style.color = "var(--success)";
+    const submitButton = contactForm.querySelector("button");
+    submitButton.disabled = true;
+    submitButton.textContent = "Consulta enviada";
+    submitButton.style.background = "var(--success-bg)";
+    submitButton.style.color = "var(--success)";
 
-  formStatus.textContent = "Gracias. Te respondo pronto con una propuesta.";
-  contactForm.reset();
-});
+    formStatus.textContent = "Gracias. KGG te responde pronto con una propuesta.";
+    contactForm.reset();
+  });
+}
