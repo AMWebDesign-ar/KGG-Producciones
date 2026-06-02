@@ -286,36 +286,6 @@ h3 {
   color: var(--cream);
 }
 
-.hero-stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 28px;
-  margin: 44px 0 0;
-  padding-top: 32px;
-  border-top: 1px solid var(--line);
-}
-
-.hero-stats div {
-  min-width: 105px;
-}
-
-.hero-stats dt {
-  color: var(--gold);
-  font-family: var(--font-display);
-  font-size: 40px;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.hero-stats dd {
-  margin: 4px 0 0;
-  color: var(--muted);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
 .hero-media {
   position: relative;
   min-height: min(68vh, 740px);
@@ -814,19 +784,55 @@ h3 {
   margin: 0;
 }
 
-.site-footer div {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-}
-
-.site-footer a:not(.brand) {
+.site-footer a:not(.brand),
+.footer-credit {
   color: var(--muted);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+.footer-credit:hover,
+.footer-credit:focus-visible {
+  color: var(--teal);
+}
+
+.floating-actions {
+  position: fixed;
+  right: clamp(16px, 3vw, 28px);
+  bottom: clamp(16px, 3vw, 28px);
+  z-index: 30;
+  display: grid;
+  gap: 10px;
+}
+
+.floating-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(6, 7, 8, 0.92);
+  color: var(--cream);
+  text-decoration: none;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.32);
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.floating-button:hover,
+.floating-button:focus-visible {
+  background: var(--teal);
+  color: var(--black);
+  transform: translateY(-2px);
+}
+
+.floating-whatsapp {
+  background: #25d366;
+  color: #07140b;
 }
 
 .reveal {
@@ -960,11 +966,6 @@ h3 {
     width: 100%;
   }
 
-  .hero-stats {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
   .media-note {
     left: 12px;
     right: 12px;
@@ -978,5 +979,10 @@ h3 {
   .site-footer {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .floating-button {
+    width: 46px;
+    height: 46px;
   }
 }
