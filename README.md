@@ -6,6 +6,8 @@ Sitio estatico para KGG Producciones, productora audiovisual de Buenos Aires enf
 
 - Instagram: https://www.instagram.com/kggproducciones/
 - Atom.bio: https://www.atom.bio/kggproducciones
+- WhatsApp: +54 9 11 2581-2316
+- Email: kggproducciones@gmail.com
 
 ## Contenido principal
 
