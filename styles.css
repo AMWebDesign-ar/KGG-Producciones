@@ -1,18 +1,23 @@
 :root {
-  --black: #060708;
-  --surface: #101316;
-  --surface-2: #171c21;
-  --cream: #f2f4f0;
-  --white: #fbfbfb;
-  --muted: rgba(242, 244, 240, 0.64);
-  --muted-strong: rgba(242, 244, 240, 0.82);
-  --line: rgba(255, 255, 255, 0.1);
-  --gold: #ff3b30;
-  --gold-light: #ff6b5f;
-  --teal: #2ee6d6;
-  --rose: #ffb84d;
-  --success: #80ffd9;
-  --success-bg: #12362f;
+  --black: #050505;
+  --surface: #b7ff4a;
+  --surface-2: #d8ff8a;
+  --surface-3: #efffb8;
+  --surface-deep: #91df2d;
+  --cream: #050505;
+  --white: #050505;
+  --muted: rgba(5, 5, 5, 0.68);
+  --muted-strong: rgba(5, 5, 5, 0.84);
+  --line: rgba(5, 5, 5, 0.2);
+  --line-strong: rgba(5, 5, 5, 0.78);
+  --gold: #050505;
+  --gold-light: #1d1d1d;
+  --teal: #6fd62f;
+  --rose: #ecff65;
+  --success: #093a18;
+  --success-bg: #d8ff8a;
+  --shadow-hard: 8px 8px 0 rgba(5, 5, 5, 0.88);
+  --shadow-soft: 0 20px 50px rgba(5, 5, 5, 0.16);
   --font-display: "Arial Black", Impact, system-ui, sans-serif;
   --font-body: Arial, Helvetica, system-ui, sans-serif;
 }
@@ -35,9 +40,10 @@ body {
 body {
   margin: 0;
   background:
-    radial-gradient(circle at 74% 10%, rgba(46, 230, 214, 0.12), transparent 28%),
-    radial-gradient(circle at 12% 8%, rgba(255, 59, 48, 0.16), transparent 26%),
-    var(--black);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.24), transparent 30%),
+    radial-gradient(circle at 74% 10%, rgba(236, 255, 101, 0.42), transparent 28%),
+    radial-gradient(circle at 12% 8%, rgba(111, 214, 47, 0.32), transparent 26%),
+    var(--surface);
   color: var(--cream);
   font-family: var(--font-body);
   font-size: 15px;
@@ -89,13 +95,13 @@ svg {
   justify-content: space-between;
   gap: 28px;
   padding: 22px clamp(20px, 5vw, 60px);
-  background: linear-gradient(180deg, rgba(6, 7, 8, 0.96), rgba(6, 7, 8, 0.22));
+  background: linear-gradient(180deg, rgba(183, 255, 74, 0.98), rgba(183, 255, 74, 0.72));
   transition: background 220ms ease, border-color 220ms ease, padding 220ms ease;
 }
 
 .site-header.scrolled {
-  border-bottom: 1px solid var(--line);
-  background: rgba(6, 7, 8, 0.98);
+  border-bottom: 2px solid var(--black);
+  background: rgba(183, 255, 74, 0.98);
   padding-block: 16px;
 }
 
@@ -105,7 +111,7 @@ svg {
   flex: 0 0 auto;
   width: 56px;
   height: 56px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(5, 5, 5, 0.16);
   border-radius: 8px;
   overflow: hidden;
   background: #000;
@@ -140,8 +146,9 @@ svg {
 }
 
 .site-nav .nav-button {
-  border: 1px solid rgba(255, 59, 48, 0.68);
-  color: var(--gold);
+  border: 2px solid var(--black);
+  background: var(--black);
+  color: var(--surface);
   padding: 9px 18px;
 }
 
@@ -171,6 +178,7 @@ svg {
   align-items: center;
   padding: 118px clamp(20px, 5vw, 64px) 48px;
   position: relative;
+  isolation: isolate;
 }
 
 .hero::before {
@@ -180,8 +188,17 @@ svg {
   width: 34vw;
   max-width: 520px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--teal), var(--gold));
-  opacity: 0.9;
+  background: var(--black);
+  opacity: 1;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  z-index: -1;
+  height: 34%;
+  background: var(--surface-3);
 }
 
 .hero-copy {
@@ -207,6 +224,15 @@ svg {
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+}
+
+.hero .eyebrow,
+.section-header .eyebrow,
+.contact-copy .eyebrow,
+.about-copy .eyebrow {
+  background: var(--black);
+  color: var(--surface);
+  padding: 7px 10px;
 }
 
 .eyebrow::before {
@@ -236,6 +262,7 @@ h1 {
   max-width: 640px;
   margin-bottom: 24px;
   font-size: clamp(42px, 5vw, 72px);
+  text-wrap: balance;
 }
 
 h2 {
@@ -273,8 +300,8 @@ h3 {
   max-width: 100%;
   min-height: 50px;
   gap: 10px;
-  border: 1px solid transparent;
-  border-radius: 999px;
+  border: 2px solid var(--black);
+  border-radius: 0;
   padding: 13px 24px;
   color: inherit;
   cursor: pointer;
@@ -288,27 +315,30 @@ h3 {
 
 .button:hover,
 .button:focus-visible {
-  transform: translateY(-1px);
+  transform: translate(-2px, -2px);
 }
 
 .button-primary {
-  background: linear-gradient(135deg, var(--gold), var(--rose));
-  color: #060708;
+  background: var(--black);
+  color: var(--surface);
+  box-shadow: 5px 5px 0 rgba(5, 5, 5, 0.22);
 }
 
 .button-primary:hover,
 .button-primary:focus-visible {
   background: var(--gold-light);
+  color: var(--surface-2);
 }
 
 .button-secondary {
-  border-color: var(--line);
+  border-color: var(--black);
   color: var(--muted-strong);
+  background: transparent;
 }
 
 .button-secondary:hover,
 .button-secondary:focus-visible {
-  border-color: rgba(242, 244, 240, 0.32);
+  border-color: rgba(5, 5, 5, 0.32);
   color: var(--cream);
 }
 
@@ -317,7 +347,8 @@ h3 {
   min-height: min(58vh, 640px);
   overflow: hidden;
   background: var(--surface-2);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 3px solid var(--black);
+  box-shadow: var(--shadow-hard);
 }
 
 .hero-media picture,
@@ -339,8 +370,8 @@ h3 {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(0deg, rgba(6, 7, 8, 0.54), rgba(6, 7, 8, 0.05) 45%, rgba(6, 7, 8, 0.2)),
-    linear-gradient(90deg, rgba(255, 59, 48, 0.13), transparent 42%, rgba(46, 230, 214, 0.12));
+    linear-gradient(0deg, rgba(5, 5, 5, 0.36), rgba(5, 5, 5, 0.04) 45%, rgba(5, 5, 5, 0.08)),
+    linear-gradient(90deg, rgba(183, 255, 74, 0.18), transparent 42%, rgba(236, 255, 101, 0.2));
   pointer-events: none;
 }
 
@@ -352,9 +383,9 @@ h3 {
   display: flex;
   align-items: center;
   gap: 9px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(6, 7, 8, 0.64);
-  color: var(--white);
+  border: 2px solid var(--black);
+  background: var(--surface);
+  color: var(--black);
   padding: 8px 12px;
   font-size: 11px;
   font-weight: 800;
@@ -367,7 +398,7 @@ h3 {
   height: 9px;
   border-radius: 999px;
   background: var(--gold);
-  box-shadow: 0 0 18px rgba(255, 59, 48, 0.85);
+  box-shadow: 0 0 18px rgba(5, 5, 5, 0.36);
 }
 
 .media-note {
@@ -382,8 +413,8 @@ h3 {
 
 .media-note span,
 .tags span {
-  border: 1px solid rgba(242, 244, 240, 0.16);
-  background: rgba(6, 7, 8, 0.58);
+  border: 2px solid var(--black);
+  background: var(--surface);
   color: var(--cream);
   padding: 7px 12px;
   font-size: 11px;
@@ -398,8 +429,9 @@ h3 {
 
 .section-muted {
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.03), transparent 34%),
-    var(--surface);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.32), transparent 34%),
+    var(--surface-3);
+  border-block: 3px solid var(--black);
 }
 
 .section-header {
@@ -422,8 +454,8 @@ h3 {
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1px;
-  background: var(--line);
+  gap: 14px;
+  background: transparent;
 }
 
 .service-card,
@@ -431,28 +463,32 @@ h3 {
   position: relative;
   min-height: 315px;
   padding: 42px 34px;
-  background: var(--surface);
+  border: 2px solid var(--black);
+  background: var(--surface-3);
   overflow: hidden;
-  transition: background 200ms ease;
+  box-shadow: 5px 5px 0 rgba(5, 5, 5, 0.24);
+  transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
 }
 
 .service-card:hover,
 .pricing-card:hover {
   background: var(--surface-2);
+  box-shadow: 8px 8px 0 rgba(5, 5, 5, 0.82);
+  transform: translate(-3px, -3px);
 }
 
 .service-card svg {
   width: 30px;
   height: 30px;
   margin-bottom: 22px;
-  color: var(--teal);
+  color: var(--black);
 }
 
 .service-number {
   position: absolute;
   top: 14px;
   right: 22px;
-  color: rgba(255, 59, 48, 0.15);
+  color: rgba(5, 5, 5, 0.12);
   font-family: var(--font-display);
   font-size: 76px;
   line-height: 1;
@@ -497,11 +533,11 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  gap: 8px;
+  gap: 10px;
 }
 
 .filter-button {
-  border: 1px solid var(--line);
+  border: 2px solid var(--black);
   background: transparent;
   color: var(--muted);
   padding: 8px 16px;
@@ -518,13 +554,13 @@ h3 {
 .filter-button:focus-visible {
   border-color: var(--gold);
   background: var(--gold);
-  color: var(--black);
+  color: var(--surface);
 }
 
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 4px;
+  gap: 14px;
 }
 
 .portfolio-item {
@@ -533,10 +569,12 @@ h3 {
   min-height: 330px;
   overflow: hidden;
   background: var(--surface-2);
+  border: 3px solid var(--black);
   color: inherit;
   isolation: isolate;
   text-decoration: none;
-  transition: opacity 220ms ease, transform 220ms ease;
+  box-shadow: var(--shadow-soft);
+  transition: opacity 220ms ease, transform 220ms ease, box-shadow 220ms ease;
 }
 
 .portfolio-item.wide {
@@ -551,7 +589,7 @@ h3 {
   width: 100%;
   height: 100%;
   min-height: inherit;
-  background-image: linear-gradient(0deg, rgba(6, 7, 8, 0.38), rgba(6, 7, 8, 0.08)), url("assets/hero-visual-creator.png");
+  background-image: linear-gradient(0deg, rgba(183, 255, 74, 0.34), rgba(183, 255, 74, 0.08)), url("assets/hero-visual-creator.png");
   background-size: cover;
   transition: transform 500ms ease, filter 220ms ease;
 }
@@ -567,13 +605,19 @@ h3 {
   content: "";
   position: absolute;
   inset: auto 0 0;
-  height: 58%;
+  height: 64%;
   z-index: 1;
-  background: linear-gradient(0deg, rgba(6, 7, 8, 0.94), rgba(6, 7, 8, 0));
+  background: linear-gradient(0deg, rgba(183, 255, 74, 0.98), rgba(183, 255, 74, 0.12));
 }
 
 .portfolio-item:hover .portfolio-media-tile {
   transform: scale(1.04);
+}
+
+.portfolio-item:hover,
+.portfolio-item:focus-visible {
+  box-shadow: var(--shadow-hard);
+  transform: translate(-3px, -3px);
 }
 
 .portfolio-item:focus-visible .portfolio-media-tile {
@@ -618,7 +662,7 @@ h3 {
   grid-template-columns: 64px minmax(0, 1fr);
   gap: 22px;
   padding: 30px 0;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 2px solid var(--black);
 }
 
 .step:first-child {
@@ -630,7 +674,7 @@ h3 {
 }
 
 .step span {
-  color: rgba(255, 59, 48, 0.34);
+  color: rgba(5, 5, 5, 0.28);
   font-family: var(--font-display);
   font-size: 48px;
   line-height: 1;
@@ -649,6 +693,8 @@ h3 {
   min-height: 420px;
   overflow: hidden;
   background: var(--surface-2);
+  border: 3px solid var(--black);
+  box-shadow: var(--shadow-hard);
 }
 
 .about-portrait img {
@@ -657,7 +703,7 @@ h3 {
 
 .about-copy blockquote {
   margin: 26px 0;
-  border-left: 2px solid var(--gold);
+  border-left: 6px solid var(--gold);
   padding-left: 24px;
   color: var(--white);
   font-family: var(--font-display);
@@ -683,7 +729,8 @@ h3 {
 }
 
 .pricing-card.featured {
-  background: linear-gradient(145deg, rgba(255, 59, 48, 0.18), rgba(46, 230, 214, 0.08)), var(--surface);
+  background: var(--surface);
+  box-shadow: var(--shadow-hard);
 }
 
 .pricing-card h3 {
@@ -695,7 +742,7 @@ h3 {
   display: inline-flex;
   margin-bottom: 24px;
   background: var(--gold);
-  color: var(--black);
+  color: var(--surface);
   padding: 5px 12px;
   font-size: 10px;
   font-weight: 800;
@@ -711,7 +758,7 @@ h3 {
 
 .pricing-card li {
   padding: 11px 0;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid rgba(5, 5, 5, 0.24);
 }
 
 .pricing-card li::before {
@@ -735,7 +782,7 @@ h3 {
   grid-template-columns: 42px minmax(0, 1fr);
   gap: 14px;
   align-items: center;
-  border: 1px solid var(--line);
+  border: 2px solid var(--black);
   padding: 16px;
   color: var(--muted-strong);
   text-decoration: none;
@@ -743,8 +790,8 @@ h3 {
 }
 
 .channels a:hover {
-  border-color: rgba(255, 59, 48, 0.52);
-  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(5, 5, 5, 0.42);
+  background: rgba(255, 255, 255, 0.24);
 }
 
 .channels svg {
@@ -761,7 +808,9 @@ h3 {
   display: grid;
   gap: 18px;
   padding: 34px;
-  background: var(--surface);
+  border: 3px solid var(--black);
+  background: var(--surface-3);
+  box-shadow: var(--shadow-hard);
 }
 
 .contact-form label {
@@ -778,8 +827,8 @@ h3 {
 .contact-form select,
 .contact-form textarea {
   width: 100%;
-  border: 1px solid var(--line);
-  background: #090b0d;
+  border: 2px solid var(--black);
+  background: rgba(255, 255, 255, 0.42);
   color: var(--cream);
   padding: 14px 15px;
   outline: none;
@@ -795,8 +844,8 @@ h3 {
 .contact-form input:focus,
 .contact-form select:focus,
 .contact-form textarea:focus {
-  border-color: rgba(255, 59, 48, 0.72);
-  background: #11161a;
+  border-color: rgba(5, 5, 5, 0.72);
+  background: rgba(255, 255, 255, 0.68);
 }
 
 .contact-form button {
@@ -816,7 +865,7 @@ h3 {
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  border-top: 1px solid var(--line);
+  border-top: 3px solid var(--black);
   padding: 28px clamp(20px, 5vw, 64px);
   color: var(--muted);
 }
@@ -855,25 +904,25 @@ h3 {
   justify-content: center;
   width: 50px;
   height: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 999px;
-  background: rgba(6, 7, 8, 0.92);
-  color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 0;
+  background: rgba(183, 255, 74, 0.92);
+  color: var(--black);
   text-decoration: none;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.32);
+  box-shadow: 5px 5px 0 rgba(5, 5, 5, 0.32);
   transition: background 180ms ease, color 180ms ease, transform 180ms ease;
 }
 
 .floating-button:hover,
 .floating-button:focus-visible {
-  background: var(--teal);
-  color: var(--black);
+  background: var(--black);
+  color: var(--surface);
   transform: translateY(-2px);
 }
 
 .floating-whatsapp {
-  background: #25d366;
-  color: #07140b;
+  background: var(--black);
+  color: var(--surface);
 }
 
 .reveal {
@@ -939,7 +988,7 @@ h3 {
     align-items: stretch;
     gap: 0;
     border: 1px solid var(--line);
-    background: rgba(13, 13, 13, 0.97);
+    background: rgba(183, 255, 74, 0.97);
     padding: 8px;
   }
 
