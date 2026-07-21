@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600;700;800&display=swap');
+
 :root {
   --black: #000000;
   --surface: #b7ff5c;
@@ -18,8 +20,8 @@
   --success-bg: #b7ff5c;
   --shadow-hard: 8px 8px 0 rgba(0, 0, 0, 0.88);
   --shadow-soft: 0 20px 50px rgba(0, 0, 0, 0.16);
-  --font-display: "Arial Black", Impact, system-ui, sans-serif;
-  --font-body: Arial, Helvetica, system-ui, sans-serif;
+  --font-display: "Bebas Neue", "Arial Black", Impact, system-ui, sans-serif;
+  --font-body: "Open Sans", Arial, Helvetica, system-ui, sans-serif;
 }
 
 *,
@@ -40,15 +42,15 @@ body {
 body {
   margin: 0;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.24), transparent 30%),
-    radial-gradient(circle at 74% 10%, rgba(236, 255, 101, 0.42), transparent 28%),
-    radial-gradient(circle at 12% 8%, rgba(111, 214, 47, 0.32), transparent 26%),
-    var(--surface);
+    radial-gradient(circle at top right, rgba(183, 255, 92, 0.24), transparent 22%),
+    radial-gradient(circle at top left, rgba(0, 0, 0, 0.04), transparent 20%),
+    #ffffff;
   color: var(--cream);
   font-family: var(--font-body);
   font-size: 15px;
   line-height: 1.6;
   overflow-x: hidden;
+  letter-spacing: 0.01em;
 }
 
 img {
@@ -95,13 +97,15 @@ svg {
   justify-content: space-between;
   gap: 28px;
   padding: 22px clamp(20px, 5vw, 60px);
-  background: linear-gradient(180deg, rgba(183, 255, 74, 0.98), rgba(183, 255, 74, 0.72));
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   transition: background 220ms ease, border-color 220ms ease, padding 220ms ease;
 }
 
 .site-header.scrolled {
   border-bottom: 2px solid var(--black);
-  background: rgba(183, 255, 74, 0.98);
+  background: rgba(255, 255, 255, 0.98);
   padding-block: 16px;
 }
 
@@ -131,7 +135,7 @@ svg {
 }
 
 .site-nav a {
-  color: var(--muted);
+  color: var(--muted-strong);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -142,13 +146,13 @@ svg {
 
 .site-nav a:hover,
 .site-nav a:focus-visible {
-  color: var(--cream);
+  color: var(--teal);
 }
 
 .site-nav .nav-button {
   border: 2px solid var(--black);
   background: var(--black);
-  color: var(--surface);
+  color: var(--white);
   padding: 9px 18px;
 }
 
@@ -198,7 +202,7 @@ svg {
   inset: auto 0 0;
   z-index: -1;
   height: 34%;
-  background: var(--surface-3);
+  background: linear-gradient(90deg, rgba(183, 255, 92, 0.32), rgba(183, 255, 92, 0.05));
 }
 
 .hero-copy {
@@ -251,11 +255,12 @@ p {
 
 h1,
 h2 {
-  color: var(--white);
+  color: var(--black);
   font-family: var(--font-display);
   font-weight: 700;
   line-height: 0.98;
   text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 h1 {
@@ -271,17 +276,18 @@ h2 {
 }
 
 h3 {
-  color: var(--white);
+  color: var(--black);
   font-family: var(--font-display);
   font-size: 25px;
   font-weight: 700;
   line-height: 1.15;
+  letter-spacing: 0.02em;
 }
 
 .hero-text {
   max-width: 510px;
   margin-bottom: 30px;
-  color: var(--muted);
+  color: var(--muted-strong);
   font-size: 17px;
   overflow-wrap: break-word;
 }
@@ -320,26 +326,27 @@ h3 {
 
 .button-primary {
   background: var(--black);
-  color: var(--surface);
-  box-shadow: 5px 5px 0 rgba(5, 5, 5, 0.22);
+  color: var(--white);
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.22);
 }
 
 .button-primary:hover,
 .button-primary:focus-visible {
-  background: var(--gold-light);
-  color: var(--surface-2);
+  background: var(--teal);
+  color: var(--black);
 }
 
 .button-secondary {
   border-color: var(--black);
   color: var(--muted-strong);
-  background: transparent;
+  background: #ffffff;
 }
 
 .button-secondary:hover,
 .button-secondary:focus-visible {
-  border-color: rgba(5, 5, 5, 0.32);
-  color: var(--cream);
+  border-color: var(--black);
+  background: var(--surface);
+  color: var(--black);
 }
 
 .hero-media {
@@ -464,16 +471,16 @@ h3 {
   min-height: 315px;
   padding: 42px 34px;
   border: 2px solid var(--black);
-  background: var(--surface-3);
+  background: #ffffff;
   overflow: hidden;
-  box-shadow: 5px 5px 0 rgba(5, 5, 5, 0.24);
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.14);
   transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
 }
 
 .service-card:hover,
 .pricing-card:hover {
-  background: var(--surface-2);
-  box-shadow: 8px 8px 0 rgba(5, 5, 5, 0.82);
+  background: #fbfbfb;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.64);
   transform: translate(-3px, -3px);
 }
 
@@ -625,7 +632,7 @@ h3 {
   inset: auto 0 0;
   height: 64%;
   z-index: 1;
-  background: linear-gradient(0deg, rgba(183, 255, 74, 0.98), rgba(183, 255, 74, 0.12));
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.18));
 }
 
 .portfolio-item:hover .portfolio-media-tile {
@@ -650,7 +657,7 @@ h3 {
 }
 
 .portfolio-info span {
-  color: var(--gold);
+  color: var(--surface);
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.15em;
@@ -755,7 +762,7 @@ h3 {
 }
 
 .pricing-card.featured {
-  background: var(--surface);
+  background: linear-gradient(135deg, #ffffff, rgba(183, 255, 92, 0.36));
   box-shadow: var(--shadow-hard);
 }
 
@@ -816,8 +823,8 @@ h3 {
 }
 
 .channels a:hover {
-  border-color: rgba(5, 5, 5, 0.42);
-  background: rgba(255, 255, 255, 0.24);
+  border-color: rgba(0, 0, 0, 0.42);
+  background: rgba(183, 255, 92, 0.18);
 }
 
 .channels svg {
@@ -835,7 +842,7 @@ h3 {
   gap: 18px;
   padding: 34px;
   border: 3px solid var(--black);
-  background: var(--surface-3);
+  background: #ffffff;
   box-shadow: var(--shadow-hard);
 }
 
