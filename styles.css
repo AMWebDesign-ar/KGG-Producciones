@@ -4,7 +4,7 @@
   --black: #000000;
   --surface: #b7ff5c;
   --surface-2: #ffffff;
-  --surface-3: #f4f4f4;
+  --surface-3: #f7ffe5;
   --surface-deep: #8fdf32;
   --cream: #000000;
   --white: #ffffff;
@@ -42,7 +42,8 @@ body {
 body {
   margin: 0;
   background:
-    radial-gradient(circle at top right, rgba(183, 255, 92, 0.24), transparent 22%),
+    linear-gradient(180deg, rgba(183, 255, 92, 0.24), transparent 32%),
+    radial-gradient(circle at top right, rgba(183, 255, 92, 0.32), transparent 22%),
     radial-gradient(circle at top left, rgba(0, 0, 0, 0.04), transparent 20%),
     #ffffff;
   color: var(--cream);
@@ -97,7 +98,7 @@ svg {
   justify-content: space-between;
   gap: 28px;
   padding: 22px clamp(20px, 5vw, 60px);
-  background: rgba(255, 255, 255, 0.96);
+  background: linear-gradient(180deg, rgba(183, 255, 92, 0.4), rgba(255, 255, 255, 0.96));
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   transition: background 220ms ease, border-color 220ms ease, padding 220ms ease;
@@ -105,7 +106,7 @@ svg {
 
 .site-header.scrolled {
   border-bottom: 2px solid var(--black);
-  background: rgba(255, 255, 255, 0.98);
+  background: linear-gradient(180deg, rgba(183, 255, 92, 0.58), rgba(255, 255, 255, 0.98));
   padding-block: 16px;
 }
 
@@ -144,6 +145,17 @@ svg {
   transition: color 180ms ease;
 }
 
+.site-nav a,
+.menu-toggle,
+.button,
+.floating-button,
+.channels a,
+.portfolio-item,
+.service-card,
+.pricing-card {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .site-nav a:hover,
 .site-nav a:focus-visible {
   color: var(--teal);
@@ -152,7 +164,7 @@ svg {
 .site-nav .nav-button {
   border: 2px solid var(--black);
   background: var(--black);
-  color: var(--white);
+  color: var(--surface);
   padding: 9px 18px;
 }
 
@@ -299,6 +311,11 @@ h3 {
   align-items: center;
 }
 
+.hero-actions .button,
+.button {
+  min-height: 48px;
+}
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -326,13 +343,13 @@ h3 {
 
 .button-primary {
   background: var(--black);
-  color: var(--white);
+  color: var(--surface);
   box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.22);
 }
 
 .button-primary:hover,
 .button-primary:focus-visible {
-  background: var(--teal);
+  background: var(--surface);
   color: var(--black);
 }
 
@@ -422,7 +439,7 @@ h3 {
 .tags span {
   border: 2px solid var(--black);
   background: var(--surface);
-  color: var(--cream);
+  color: var(--black);
   padding: 7px 12px;
   font-size: 11px;
   font-weight: 700;
@@ -436,7 +453,7 @@ h3 {
 
 .section-muted {
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.32), transparent 34%),
+    linear-gradient(135deg, rgba(183, 255, 92, 0.24), rgba(255, 255, 255, 0.3) 42%),
     var(--surface-3);
   border-block: 3px solid var(--black);
 }
@@ -559,9 +576,9 @@ h3 {
 .filter-button.active,
 .filter-button:hover,
 .filter-button:focus-visible {
-  border-color: var(--gold);
-  background: var(--gold);
-  color: var(--surface);
+  border-color: var(--black);
+  background: var(--surface);
+  color: var(--black);
 }
 
 .portfolio-grid {
@@ -598,32 +615,35 @@ h3 {
   min-height: inherit;
   background-image: linear-gradient(0deg, rgba(183, 255, 74, 0.34), rgba(183, 255, 74, 0.08)), url("assets/hero-visual-creator.png");
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: saturate(0.96) contrast(1.04) brightness(0.95);
   transition: transform 500ms ease, filter 220ms ease;
 }
 
 .media-a {
   background-image: linear-gradient(0deg, rgba(183, 255, 74, 0.24), rgba(183, 255, 74, 0.08)), url("assets/portfolio-contenido-vertical.webp");
-  background-position: center;
+  background-position: center 55%;
 }
 
 .media-b {
   background-image: linear-gradient(0deg, rgba(183, 255, 74, 0.24), rgba(183, 255, 74, 0.08)), url("assets/portfolio-eventos-lanzamientos.webp");
-  background-position: center;
+  background-position: center 52%;
 }
 
 .media-c {
   background-image: linear-gradient(0deg, rgba(183, 255, 74, 0.24), rgba(183, 255, 74, 0.08)), url("assets/portfolio-videos-comerciales.webp");
-  background-position: center;
+  background-position: center 46%;
 }
 
 .media-d {
   background-image: linear-gradient(0deg, rgba(183, 255, 74, 0.24), rgba(183, 255, 74, 0.08)), url("assets/portfolio-resumenes-dinamicos.webp");
-  background-position: center;
+  background-position: center 47%;
 }
 
 .media-e {
   background-image: linear-gradient(0deg, rgba(183, 255, 74, 0.24), rgba(183, 255, 74, 0.08)), url("assets/portfolio-campanas.webp");
-  background-position: center;
+  background-position: center 50%;
 }
 
 .portfolio-item::after {
@@ -632,7 +652,7 @@ h3 {
   inset: auto 0 0;
   height: 64%;
   z-index: 1;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.18));
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.18));
 }
 
 .portfolio-item:hover .portfolio-media-tile {
@@ -954,8 +974,8 @@ h3 {
 }
 
 .floating-whatsapp {
-  background: var(--black);
-  color: var(--surface);
+  background: var(--surface);
+  color: var(--black);
 }
 
 .reveal {
@@ -1020,8 +1040,9 @@ h3 {
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    border: 1px solid var(--line);
-    background: rgba(183, 255, 74, 0.97);
+    border: 2px solid var(--black);
+    background: rgba(183, 255, 92, 0.98);
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.18);
     padding: 8px;
   }
 
@@ -1031,6 +1052,7 @@ h3 {
 
   .site-nav a {
     padding: 14px;
+    color: var(--black);
   }
 
   .site-nav .nav-button {
@@ -1047,6 +1069,11 @@ h3 {
   .hero-copy,
   .hero-media {
     width: 100%;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
   }
 
   h1 {
@@ -1103,7 +1130,8 @@ h3 {
 }
 
 @media (max-width: 560px) {
-  .hero-actions .button {
+  .hero-actions .button,
+  .button {
     width: 100%;
   }
 
@@ -1114,6 +1142,10 @@ h3 {
 
   .button {
     padding-inline: 18px;
+  }
+
+  .site-header {
+    padding-inline: 16px;
   }
 }
 
