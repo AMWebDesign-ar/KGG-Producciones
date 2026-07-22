@@ -38,6 +38,20 @@ if (menuToggle && nav) {
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+const portfolioMediaTiles = document.querySelectorAll(".portfolio-media-tile");
+portfolioMediaTiles.forEach((tile) => {
+  const iframe = tile.querySelector("iframe");
+  if (!iframe) return;
+
+  iframe.addEventListener("load", () => {
+    tile.classList.add("is-iframe-ready");
+  }, { once: true });
+
+  iframe.addEventListener("error", () => {
+    tile.classList.add("is-iframe-ready");
+  }, { once: true });
+});
+
 if (prefersReducedMotion) {
   document.querySelectorAll(".reveal").forEach((element) => {
     element.classList.add("visible");
